@@ -895,6 +895,16 @@ button[class*="lookFilled_dd4f85"]:hover {
     background: rgba(147, 51, 234, 0.15) !important;
 }
 
+/* NEW SPOILER STYLES ADD BELOW */
+[class*="spoilerContainer"] [class*="hiddenSpoiler"] {
+    background: rgba(147, 51, 234, 0.5) !important;
+    transition: background-color 0.2s ease;
+}
+
+[class*="spoilerContent"][class*="revealed"] {
+    background: transparent !important;
+}
+
 .popout__4c91, /* Server activity */ 
 .reactionTooltip_fba897  /* Reaction tooltip */ {
     backdrop-filter: blur(15px) brightness(0.6);
