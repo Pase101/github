@@ -1102,3 +1102,9 @@ article.embedWrapper_b558d0.embedFlexGrow_b558d0.embedFull_b0068a.embed_b0068a.m
     }
 }
 
+/* Change the speaking indicator (green circle) to purple */
+[aria-label="Voice Connected"] .avatarSpeaking-2pCGrZ {
+    box-shadow: 0 0 10px 4px rgba(128, 0, 128, 0.9) !important;
+}
+
+
