@@ -1101,3 +1101,12 @@ article.embedWrapper_b558d0.embedFlexGrow_b558d0.embedFull_b0068a.embed_b0068a.m
         transform: rotate(360deg);
     }
 }
+
+/* Speaking Indicator - Purple Glow */
+.border_ba4b17.speaking_ba4b17 {
+    box-shadow: 0 0 15px 4px rgba(160, 32, 240, 0.8), 
+                inset 0 0 20px rgba(160, 32, 240, 0.6);
+    border-radius: 50%; /* Ensures a circular glow */
+    transition: box-shadow 0.2s ease-in-out;
+}
+
