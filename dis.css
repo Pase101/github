@@ -1102,9 +1102,25 @@ article.embedWrapper_b558d0.embedFlexGrow_b558d0.embedFull_b0068a.embed_b0068a.m
     }
 }
 
-/* Change the speaking indicator (green circle) to purple */
-[aria-label="Voice Connected"] .avatarSpeaking-2pCGrZ {
+@keyframes purpleGlow {
+    0% { box-shadow: 0 0 5px 2px rgba(128, 0, 128, 0.7); }
+    50% { box-shadow: 0 0 15px 6px rgba(128, 0, 128, 0.9); }
+    100% { box-shadow: 0 0 5px 2px rgba(128, 0, 128, 0.7); }
+}
+
+.voiceState-2wLxEc.speaking-3XEf3p .avatarContainer-2inGBK {
     box-shadow: 0 0 10px 4px rgba(128, 0, 128, 0.9) !important;
+    animation: purpleGlow 1s infinite alternate;
+}
+
+.voiceState-2wLxEc.speaking-3XEf3p .avatarContainer-2inGBK svg {
+    filter: drop-shadow(0 0 10px rgba(128, 0, 128, 0.9)) !important;
+}
+
+/* Optional: Make the ring more visible */
+.voiceState-2wLxEc.speaking-3XEf3p .avatarContainer-2inGBK {
+    border-radius: 50% !important;
+    border: 2px solid rgba(128, 0, 128, 1) !important;
 }
 
 
