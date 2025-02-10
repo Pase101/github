@@ -6,3 +6,4 @@ local list = {
 1935561886
 }
 return table.find(list, game.Players.LocalPlayer.UserId) ~= nil
+
