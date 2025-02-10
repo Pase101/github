@@ -943,56 +943,39 @@ function library:FormatWindows()
 end
 
 function library:AddWindow(title, options)
-    windows = windows + 1
-    local dropdown_open = false
-    title = tostring(title or "New Window")
-    options = (typeof(options) == "table") and options or ui_options
-    options.tween_time = 0.1
-    options.main_color = options.main_color or Color3.fromRGB(30, 30, 30) -- Default color
+	windows = windows + 1
+	local dropdown_open = false
+	title = tostring(title or "New Window")
+	options = (typeof(options) == "table") and options or ui_options
+	options.tween_time = 0.1
 
-    local Window = Prefabs:FindFirstChild("Window"):Clone()
-    Window.Parent = Windows
-    Window:FindFirstChild("Title").Text = title
-    Window.Size = UDim2.new(0, options.min_size.X, 0, options.min_size.Y)
-    Window.ZIndex = Window.ZIndex + (windows * 10)
+	local Window = Prefabs:FindFirstChild("Window"):Clone()
+	Window.Parent = Windows
+	Window:FindFirstChild("Title").Text = title
+	Window.Size = UDim2.new(0, options.min_size.X, 0, options.min_size.Y)
+	Window.ZIndex = Window.ZIndex + (windows * 10)
 
-    -- Table to store window-related functions
-    local window_data = {}
+	do -- Altering Window Color
+		local Title = Window:FindFirstChild("Title")
+		local Bar = Window:FindFirstChild("Bar")
+		local Base = Bar:FindFirstChild("Base")
+		local Top = Bar:FindFirstChild("Top")
+		local SplitFrame = Window:FindFirstChild("TabSelection"):FindFirstChild("Frame")
+		local Toggle = Bar:FindFirstChild("Toggle")
 
-    -- ✅ Function to dynamically change the window color
-    function window_data:SetColor(color)
-        options.main_color = color -- Store the new color
-        -- Update UI elements dynamically
-        Bar.BackgroundColor3 = color
-        Base.BackgroundColor3 = color
-        Base.ImageColor3 = color
-        Top.ImageColor3 = color
-        SplitFrame.BackgroundColor3 = color
-    end
+		spawn(function()
+			while true do
+				Bar.BackgroundColor3 = options.main_color
+				Base.BackgroundColor3 = options.main_color
+				Base.ImageColor3 = options.main_color
+				Top.ImageColor3 = options.main_color
+				SplitFrame.BackgroundColor3 = options.main_color
 
-    -- ✅ Set initial colors
-    do
-        local Title = Window:FindFirstChild("Title")
-        local Bar = Window:FindFirstChild("Bar")
-        local Base = Bar:FindFirstChild("Base")
-        local Top = Bar:FindFirstChild("Top")
-        local SplitFrame = Window:FindFirstChild("TabSelection"):FindFirstChild("Frame")
-        local Toggle = Bar:FindFirstChild("Toggle")
+				RS.Heartbeat:Wait()
+			end
+		end)
 
-        spawn(function()
-            while true do
-                Bar.BackgroundColor3 = options.main_color
-                Base.BackgroundColor3 = options.main_color
-                Base.ImageColor3 = options.main_color
-                Top.ImageColor3 = options.main_color
-                SplitFrame.BackgroundColor3 = options.main_color
-                RS.Heartbeat:Wait()
-            end
-        end)
-    end
-
-    return window_data, Window -- ✅ Return the window data so users can use SetColor
-end
+	end
 
 
 	local Resizer = Window:WaitForChild("Resizer")
